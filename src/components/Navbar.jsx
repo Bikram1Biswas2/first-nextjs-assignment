@@ -1,16 +1,23 @@
 import Link from "next/link";
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 
-const Navbar = () => {
 
-    const links = <>
+const Navbar = async() => {
+
+  const {getUser} = getKindeServerSession();
+    const user = await getUser();
+    console.log(user)
+
+    const links = 
+    <>
      <li><Link href={'/'}>Home</Link></li>
      <li><Link href={'/profile'}>Profile</Link></li>
-
     </>
 
     return (
-        <div className="navbar bg-base-100">
+<div className="bg-slate-300">
+<div className="navbar w-11/12 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,8 +48,19 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Login</a>
+  {
+            user ? <>
+              <Link className='px-3 py-2 font-semibold rounded-md bg-orange-500 text-white' href='/api/auth/logout'>
+            Logout
+            </Link>
+            </> : <>
+                <Link className='px-3 py-2 font-semibold rounded-md bg-green-500 text-white' href="/api/auth/login">
+            Login
+            </Link>
+            </>         
+            }
   </div>
+</div>
 </div>
     );
 };
