@@ -3,7 +3,7 @@
 const Profile = () => {
     return (
         <div>
-            Profile
+           <h2>Welcome to your profile!</h2>
         </div>
     );
 };
