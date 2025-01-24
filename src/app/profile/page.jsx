@@ -14,7 +14,7 @@ const Profile = async () => {
  
   return (
     <div className="w-11/12 mx-auto mt-10 text-center">
-      <h2 className="text-3xl font-bold">Welcome to your profile!</h2>
+      <h2 className="text-3xl font-bold">Welcome to your profile!!!!!</h2>
       <p className="mt-4 text-lg text-gray-600">
         You are now logged in as <span className="font-semibold">{user.email || user.name}</span>.
       </p>
